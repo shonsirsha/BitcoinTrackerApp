@@ -1,0 +1,2 @@
+export const GET_BITCOIN_PRICES = "GET_BITCOIN_PRICES";
+export const SET_LOADING = "SET_LOADING";
