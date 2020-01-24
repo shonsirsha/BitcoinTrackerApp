@@ -1,5 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, Fragment } from "react";
+import "../layouts/LoadingCard/LoadingCard";
+import {
+  IonApp,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent
+} from "@ionic/react";
 import BitcoinContext from "../../context/bitcoin/bitcoinContext";
+import LoadingCard from "../layouts/LoadingCard/LoadingCard";
 
 const Home = () => {
   const bitcoinContext = useContext(BitcoinContext);
@@ -19,13 +28,22 @@ const Home = () => {
   useEffect(() => {
     console.log(bitcoinInfo);
   }, [bitcoinInfo]);
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
+  const loadingCards = (
+    <Fragment>
+      <LoadingCard></LoadingCard>
+      <LoadingCard></LoadingCard>
+      <LoadingCard></LoadingCard>
+    </Fragment>
+  );
   return (
-    <div>
-      <h1></h1>
-    </div>
+    <IonApp>
+      <IonHeader>
+        <IonToolbar color='primary'>
+          <ion-title>Bitcoin Price Tracker</ion-title>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>{loading ? loadingCards : <h1>BIGMAN</h1>}</IonContent>
+    </IonApp>
   );
 };
 
