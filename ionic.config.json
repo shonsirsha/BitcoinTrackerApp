@@ -1,0 +1,7 @@
+{
+  "name": "Bitcoin Price Tracker",
+  "type": "custom",
+  "integrations": {
+    "capacitor": {}
+  }
+}

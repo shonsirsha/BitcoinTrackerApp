@@ -5,14 +5,17 @@ ion-content {
 ion-card {
   --background: white !important;
 }
-
+body {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
 .bitcoin__logo {
   width: 140px;
   height: 140px;
   display: block;
   margin: 0 auto;
   color: white;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .bitcoin__header {
