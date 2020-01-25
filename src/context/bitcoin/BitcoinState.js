@@ -20,7 +20,7 @@ const BitcoinState = props => {
         "http://api.coindesk.com/v1/bpi/currentprice.json"
       );
 
-      dispatch({ type: GET_BITCOIN_PRICES, payload: res.data.bpi });
+      dispatch({ type: GET_BITCOIN_PRICES, payload: res.data });
     } catch (err) {
       console.error(err);
     }

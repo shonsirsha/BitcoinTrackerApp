@@ -1,33 +1,23 @@
-import React, { useEffect, useState, useContext, Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import "../layouts/LoadingCard/LoadingCard";
+import BitcoinContext from "../../context/bitcoin/bitcoinContext";
+
 import {
   IonApp,
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent
+  IonContent,
+  IonIcon
 } from "@ionic/react";
-import BitcoinContext from "../../context/bitcoin/bitcoinContext";
-import LoadingCard from "../layouts/LoadingCard/LoadingCard";
 
+import { logoBitcoin } from "ionicons/icons";
+import LoadingCard from "../layouts/LoadingCard/LoadingCard";
+import BitcoinCard from "../layouts/BitcoinCard/BitcoinCards";
+import "../../App.css";
 const Home = () => {
   const bitcoinContext = useContext(BitcoinContext);
-  const {
-    bitcoinInfo,
-    loading,
-    bitcoinErrors,
-    getBitcoinPrices
-  } = bitcoinContext;
-
-  useEffect(() => {
-    if (bitcoinInfo === null) {
-      getBitcoinPrices();
-    }
-  }, []);
-
-  useEffect(() => {
-    console.log(bitcoinInfo);
-  }, [bitcoinInfo]);
+  const { loading } = bitcoinContext;
   const loadingCards = (
     <Fragment>
       <LoadingCard></LoadingCard>
@@ -37,12 +27,17 @@ const Home = () => {
   );
   return (
     <IonApp>
-      <IonHeader>
+      {/* <IonHeader>
         <IonToolbar color='primary'>
-          <ion-title>Bitcoin Price Tracker</ion-title>
+          <IonTitle>Bitcoin Price Tracker</IonTitle>
         </IonToolbar>
-      </IonHeader>
-      <IonContent>{loading ? loadingCards : <h1>BIGMAN</h1>}</IonContent>
+      </IonHeader> */}
+      <IonContent>
+        <section className='bitcoin__header'>
+          <IonIcon icon={logoBitcoin} className='bitcoin__logo' />
+        </section>
+        {loading ? loadingCards : <BitcoinCard />}
+      </IonContent>
     </IonApp>
   );
 };
